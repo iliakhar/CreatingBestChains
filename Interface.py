@@ -16,16 +16,16 @@ class MainWindow(QWidget):
         self.move(300, 300)
         self.resize(1000, 1000)
 
-        controlVLay = QVBoxLayout()
+        controlHLay = QHBoxLayout()
         mainHLay = QHBoxLayout()
 
         self.grammarWid = GrammarWidget()
         self.chainsWid = ChainsWidget()
 
 
-        mainHLay.addLayout(controlVLay)
+        mainHLay.addLayout(controlHLay)
 
-        controlVLay.addWidget(self.grammarWid,3)
-        controlVLay.addWidget(self.chainsWid,4)
+        controlHLay.addWidget(self.grammarWid,3)
+        controlHLay.addWidget(self.chainsWid,5)
         # mainHLay.addWidget(self.workSpaceFrame, 6)
         self.setLayout(mainHLay)

@@ -22,8 +22,8 @@ class ChainsWidget(QWidget):
 
         fontBig = QFont('Arial', 15)
 
-        self.title = QLabel('Цепочки:')
-        self.title.setFont(fontBig)
+        # self.title = QLabel('Цепочки:')
+        # self.title.setFont(fontBig)
 
         self.rangeLbl = QLabel('Диапазон:')
         self.rangeLbl.setFont(fontBig)
@@ -51,9 +51,9 @@ class ChainsWidget(QWidget):
         self.createBtn = self.CreateBtn('Составить', fontBig, 50)
         self.clearBtn = self.CreateBtn('Очистить', fontBig, 50)
 
-        chainsVLay.setSpacing(10)
+        chainsVLay.setSpacing(6)
         mainHLay.addWidget(self.chainsFrame, 1)
-        chainsVLay.addWidget(self.title,0)
+        # chainsVLay.addWidget(self.title,0)
         chainsVLay.addLayout(rangeHLay)
         rangeHLay.addWidget(self.rangeLbl)
         rangeHLay.addWidget(self.fromLbl)

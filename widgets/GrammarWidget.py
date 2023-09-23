@@ -34,6 +34,7 @@ class GrammarWidget(QWidget):
         self.saveBtn = self.CreateBtn('Сохранить', fontBig, 50)
         self.loadBtn = self.CreateBtn('Загрузить', fontBig, 50)
 
+        grammarVLay.setSpacing(10)
         mainHLay.addWidget(self.grammarFrame, 1)
         grammarVLay.addWidget(self.title,0)
         grammarVLay.addWidget(self.grammarText,1)
