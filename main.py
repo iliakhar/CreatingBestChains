@@ -9,7 +9,7 @@ class KSGrammar:
     def __init__(self):
         self.nterm = dict()
         self.chains = []
-        self.chainsreationPath = []
+        self.chainsCreationPath = []
         self.sizeRange: [int, int]
         self.emptyChar = '*'
 
@@ -56,8 +56,8 @@ class KSGrammar:
                 if (not prevChain in self.chains) and (self.sizeRange[0]<=len(prevChain)<=self.sizeRange[1]):
                     # print('AAA:', variants[rowInd][0])
                     self.chains.append(prevChain)
-                    self.chainsreationPath.append([])
-                    self.chainsreationPath[-1] = [var[0] for var in variants]
+                    self.chainsCreationPath.append([])
+                    self.chainsCreationPath[-1] = [var[0] for var in variants]
 
                 variants.pop(-1)
 
