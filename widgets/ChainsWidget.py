@@ -2,11 +2,15 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import (QFont, QPixmap, QIcon)
 import sys
+from Grammar import KSGrammar
+
 
 class ChainsWidget(QWidget):
 
-    def __init__ (self):
+    def __init__(self):
         super().__init__()
+        self.ksGr: KSGrammar
+        self.ksGr = None
         self.initUI()
 
     def initUI(self):
@@ -46,7 +50,7 @@ class ChainsWidget(QWidget):
 
         self.chainsList = QListWidget()
         self.chainsList.setFont(fontBig)
-        self.chainsList.addItems(['afdsf','afadfazcxvz'])
+        self.chainsList.setSpacing(10)
 
         self.createBtn = self.CreateBtn('Составить', fontBig, 50)
         self.clearBtn = self.CreateBtn('Очистить', fontBig, 50)
@@ -68,6 +72,18 @@ class ChainsWidget(QWidget):
         btnHLay.addWidget(self.clearBtn)
         btnVLay.addLayout(btnHLay)
         self.setLayout(mainHLay)
+
+        self.createBtn.clicked.connect(self.FillChainsList)
+        self.clearBtn.clicked.connect(self.chainsList.clear)
+
+    def FillChainsList(self):
+        if self.ksGr is not None:
+            self.ksGr.SetSizeRange([int(self.fromField.text()), int(self.toField.text())])
+            self.ksGr.GetChains()
+            self.chainsList.clear()
+            for i in range(len(self.ksGr.chains)):
+                chainPath = '→'.join(self.ksGr.chainsCreationPath[i])
+                self.chainsList.addItem(str(i)+'.\t'+self.ksGr.chains[i] + '\n\t' + chainPath)
 
     def CreateBtn(self, title: str, font: QFont, minH: int):
         btn = QPushButton(title)
